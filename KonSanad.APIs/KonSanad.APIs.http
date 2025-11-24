@@ -1,0 +1,6 @@
+@KonSanad.APIs_HostAddress = http://localhost:5176
+
+GET {{KonSanad.APIs_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

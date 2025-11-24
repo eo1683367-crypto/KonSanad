@@ -1,0 +1,32 @@
+﻿// KonSanad.Repository\Entities\OrderItem.cs
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace KonSanad.Repository.Entities
+{
+    [Table("OrderItems")]
+    public class OrderItem
+    {
+        [Key]
+        public int OrderItemId { get; set; }
+
+        public int DonationOrderId { get; set; }
+        [ForeignKey(nameof(DonationOrderId))]
+        public DonationOrder? DonationOrder { get; set; }
+
+        public int SupplyId { get; set; }
+        [ForeignKey(nameof(SupplyId))]
+        public Supply? Supply { get; set; }
+
+        public string CustomSupplyName { get; set; } = null!;
+
+        public int Quantity { get; set; }
+
+        public string Unit { get; set; } = null!;
+
+        public DateTime? CreatedAt { get; set; }
+
+        public DateTime? UpdatedAt { get; set; }
+    }
+}
