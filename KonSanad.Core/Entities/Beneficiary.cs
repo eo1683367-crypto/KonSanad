@@ -21,6 +21,7 @@ namespace KonSanad.Repository.Entities
 
         public string Status { get; set; } = null!;
 
+        // Naviegation property
         public ICollection<HelpOrder> HelpOrders { get; set; } = new List<HelpOrder>();
         public ICollection<Receipt> Receipts { get; set; } = new List<Receipt>();
     }
