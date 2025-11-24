@@ -9,32 +9,27 @@ using KonSanad.Core.Entities;
 namespace KonSanad.Repository.Entities
 {
     [Table("Campaigns")]
-    public class Campaign : BaseEntity<Guid>
+    public class Campaign : BaseEntity<int>
     {
-       
-        public int? ManagerId { get; set; }
-        [ForeignKey(nameof(ManagerId))]
-        public Manager? Manager { get; set; }
-
         public string Title { get; set; } = null!;
-
         public string Description { get; set; } = null!;
-
         public DateTime? StartDate { get; set; }
-
         public DateTime? EndDate { get; set; }
-
         public decimal? GoalCash { get; set; }
-
         public int? GoalSupplies { get; set; }
+
 
         // Category FK
         public int? CategoryId { get; set; }
         [ForeignKey(nameof(CategoryId))]
-        public Category? Category { get; set; }
+        public Category? Category { get; set; } // Navigation property
+
+        public int? ManagerId { get; set; }
+        [ForeignKey(nameof(ManagerId))]
+        public Manager? Manager { get; set; }  // Navigation property
 
 
-        // Navigation
+        // Navigations
         public ICollection<DonationOrder> DonationOrders { get; set; } = new List<DonationOrder>();
         public ICollection<CampaignResult> CampaignResults { get; set; } = new List<CampaignResult>();
         public ICollection<Mission> Missions { get; set; } = new List<Mission>();

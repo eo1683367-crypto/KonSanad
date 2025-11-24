@@ -10,25 +10,16 @@ namespace KonSanad.Repository.Entities
     [Table("Supplies")]
     public class Supply : BaseEntity<int>
     {
-        
-
         public string Name { get; set; } = null!;
-
         public string Description { get; set; } = null!;
-
-
         public string Unit { get; set; } = null!;
-
-        public int StockQuantity { get; set; }
-
-        public int MinimumLevel { get; set; }
+        public int? StockQuantity { get; set; }
+        public int? MinimumLevel { get; set; }
 
         // Link to Category
         public int? CategoryId { get; set; }
         [ForeignKey(nameof(CategoryId))]
         public Category? Category { get; set; }
-
-
 
         // Navigation
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();

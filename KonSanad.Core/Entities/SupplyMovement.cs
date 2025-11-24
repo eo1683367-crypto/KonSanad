@@ -10,7 +10,7 @@ namespace KonSanad.Repository.Entities
     {
      
 
-        public int SupplyId { get; set; }
+        public int? SupplyId { get; set; }
         [ForeignKey(nameof(SupplyId))]
         public Supply? Supply { get; set; }
 
@@ -18,9 +18,8 @@ namespace KonSanad.Repository.Entities
         [ForeignKey(nameof(OrderItemId))]
         public OrderItem? OrderItem { get; set; }
 
-        // Foreign Key
         public int? BeneficiaryID { get; set; }
-
+        [ForeignKey(nameof(BeneficiaryID))]
         // Navigation Property
         public Beneficiary? Beneficiary { get; set; }
 

@@ -8,7 +8,22 @@ namespace KonSanad.Repository.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<HelpOrderItem> builder)
         {
+            builder.ToTable("HelpOrderItem");
+            builder.HasKey(hoi => hoi.Id);
 
+            builder.Property(hoi => hoi.QuantityRequested).IsRequired();
+
+            // Relationship with HelpOrder
+            builder.HasOne(hoi => hoi.HelpOrder)
+                .WithMany(h => h.HelpOrderItems)
+                .HasForeignKey(hoi => hoi.HelpOrderId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            // Relationship with Supply
+            builder.HasOne(hoi => hoi.Supply)
+                .WithMany()
+                .HasForeignKey(hoi => hoi.SupplyId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

@@ -10,7 +10,9 @@ namespace KonSanad.Repository.Entities
     [Table("DonationOrders")]
     public class DonationOrder : BaseEntity<int>
     {
-       
+        public string DonationCategoryStatus { get; set; } = null!;
+        public decimal? CashAmount { get; set; }
+        public DateTime? OrderDate { get; set; }
 
         public int? DonorId { get; set; }
         [ForeignKey(nameof(DonorId))]
@@ -20,17 +22,9 @@ namespace KonSanad.Repository.Entities
         [ForeignKey(nameof(CampaignId))]
         public Campaign? Campaign { get; set; }
 
-
         public int? ManagerId { get; set; }
         [ForeignKey(nameof(ManagerId))]
         public Manager? Manager { get; set; }
-
-        public string DonationCategoryStatus { get; set; } = null!;
-
-        public decimal? CashAmount { get; set; }
-
-
-        public DateTime? OrderDate { get; set; }
 
         // Navigation
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();

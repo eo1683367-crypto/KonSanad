@@ -7,12 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Contexts\**" />
+    <EmbeddedResource Remove="Data\Contexts\**" />
+    <None Remove="Data\Contexts\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\KonSanad.Core\KonSanad.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Contexts\" />
-    <Folder Include="Data\Contexts\" />
     <Folder Include="Repositories\" />
     <Folder Include="Repositories\" />
   </ItemGroup>

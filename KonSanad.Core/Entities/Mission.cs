@@ -8,7 +8,10 @@ namespace KonSanad.Repository.Entities
     [Table("Missions")]
     public class Mission : BaseEntity<int>
     {
-      
+        public string Title { get; set; } = null!;
+        public string Description { get; set; } = null!;
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         public int? ManagerId { get; set; }
         [ForeignKey(nameof(ManagerId))]
@@ -22,14 +25,6 @@ namespace KonSanad.Repository.Entities
         [ForeignKey(nameof(CampaignId))]
         public Campaign? Campaign { get; set; }
 
-        public string Title { get; set; } = null!;
 
-        public string Description { get; set; } = null!;
-
-        public DateTime? StartDate { get; set; }
-
-        public DateTime? EndDate { get; set; }
-
-      
     }
 }
