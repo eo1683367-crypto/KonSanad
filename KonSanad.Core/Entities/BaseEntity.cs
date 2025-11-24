@@ -17,4 +17,6 @@ public abstract class BaseEntity<TKey>
     public void SetCreated() => CreatedAt = DateTime.UtcNow;
     public void SetUpdated() => UpdatedAt = DateTime.UtcNow;
     public void MarkDeleted() => IsDeleted = true;
+
+    //s
 }
