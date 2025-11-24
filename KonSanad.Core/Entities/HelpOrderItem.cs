@@ -5,10 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace KonSanad.Repository.Entities
 {
     [Table("HelpOrderItem")]
-    public class HelpOrderItem
+    public class HelpOrderItem : BaseEntity<int>
     {
-        [Key]
-        public int HelpOrderItemId { get; set; }
+       
 
         public int HelpOrderId { get; set; }
         [ForeignKey(nameof(HelpOrderId))]

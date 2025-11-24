@@ -6,11 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace KonSanad.Repository.Entities
 {
     [Table("OrderItems")]
-    public class OrderItem
+    public class OrderItem : BaseEntity<int>
     {
-        [Key]
-        public int OrderItemId { get; set; }
-
+       
         public int DonationOrderId { get; set; }
         [ForeignKey(nameof(DonationOrderId))]
         public DonationOrder? DonationOrder { get; set; }
@@ -25,8 +23,6 @@ namespace KonSanad.Repository.Entities
 
         public string Unit { get; set; } = null!;
 
-        public DateTime? CreatedAt { get; set; }
-
-        public DateTime? UpdatedAt { get; set; }
+       
     }
 }

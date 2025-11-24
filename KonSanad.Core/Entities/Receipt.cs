@@ -6,10 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace KonSanad.Repository.Entities
 {
     [Table("Receipts")]
-    public class Receipt
+    public class Receipt : BaseEntity<Guid>
     {
-        [Key]
-        public int ReceiptId { get; set; }
+       
 
         public int? DonationOrderId { get; set; }
         [ForeignKey(nameof(DonationOrderId))]
@@ -27,10 +26,14 @@ namespace KonSanad.Repository.Entities
         [ForeignKey(nameof(DonorId))]
         public Donor? Donor { get; set; }
 
-        public decimal? AmountCash { get; set; }
+        // Foreign key to CashDonation (optional)
+        public int? CashDonationId { get; set; }
+        [ForeignKey(nameof(CashDonationId))]
+        public CashDonation? CashDonation { get; set; }
 
-        public DateTime? CreatedAt { get; set; }
 
-        public DateTime? UpdatedAt { get; set; }
+         public decimal? AmountCash { get; set; }
+
+        public DateTime dateTime { get; set; }
     }
 }

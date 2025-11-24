@@ -4,15 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
+using KonSanad.Core.Entities;
 
 namespace KonSanad.Repository.Entities
 {
     [Table("Campaigns")]
-    public class Campaign
+    public class Campaign : BaseEntity<Guid>
     {
-        [Key]
-        public int CampaignId { get; set; }
-
+       
         public int? ManagerId { get; set; }
         [ForeignKey(nameof(ManagerId))]
         public Manager? Manager { get; set; }
@@ -29,11 +28,11 @@ namespace KonSanad.Repository.Entities
 
         public int? GoalSupplies { get; set; }
 
-        public DateTime? CreatedAt { get; set; }
+        // Category FK
+        public int? CategoryId { get; set; }
+        [ForeignKey(nameof(CategoryId))]
+        public Category? Category { get; set; }
 
-        public DateTime? UpdatedAt { get; set; }
-
-        public string Status { get; set; } = null!;
 
         // Navigation
         public ICollection<DonationOrder> DonationOrders { get; set; } = new List<DonationOrder>();

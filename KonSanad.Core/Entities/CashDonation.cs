@@ -5,15 +5,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace KonSanad.Repository.Entities
 {
     [Table("CashDonation")]
-    public class CashDonation
+    public class CashDonation : BaseEntity<int>
     {
-        [Key]
-        public int CashDonationId { get; set; }
 
         public int DonationOrderId { get; set; }
         [ForeignKey(nameof(DonationOrderId))]
         public DonationOrder? DonationOrder { get; set; }
 
         public decimal Amount { get; set; }
+
+
     }
 }

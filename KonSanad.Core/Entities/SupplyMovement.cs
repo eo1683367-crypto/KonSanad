@@ -6,10 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace KonSanad.Repository.Entities
 {
     [Table("SuppliesMovement")]
-    public class SupplyMovement
+    public class SupplyMovement : BaseEntity<int>
     {
-        [Key]
-        public int MoveSuppliesId { get; set; }
+     
 
         public int SupplyId { get; set; }
         [ForeignKey(nameof(SupplyId))]
@@ -19,10 +18,17 @@ namespace KonSanad.Repository.Entities
         [ForeignKey(nameof(OrderItemId))]
         public OrderItem? OrderItem { get; set; }
 
-        // could be enum in future
-        public int? MovementSourceType { get; set; }
+        // Foreign Key
+        public int? BeneficiaryID { get; set; }
 
-        public int? MovementSourceId { get; set; }
+        // Navigation Property
+        public Beneficiary? Beneficiary { get; set; }
+
+        // could be enum in future
+
+        //public int? MovementSourceType { get; set; }
+
+        //public int? MovementSourceId { get; set; }
 
         public int? ManagerId { get; set; }
         [ForeignKey(nameof(ManagerId))]
@@ -30,12 +36,10 @@ namespace KonSanad.Repository.Entities
 
         public string MovementType { get; set; } = null!;
 
-        public int? MovedQuantity { get; set; }
+        public double? MovedQuantity { get; set; }
 
         public DateTime? MovementDate { get; set; }
 
-        public DateTime? CreatedAt { get; set; }
-
-        public DateTime? UpdatedAt { get; set; }
+     
     }
 }

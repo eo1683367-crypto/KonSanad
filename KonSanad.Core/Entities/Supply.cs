@@ -3,20 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using KonSanad.Core.Entities;
 
 namespace KonSanad.Repository.Entities
 {
     [Table("Supplies")]
-    public class Supply
+    public class Supply : BaseEntity<int>
     {
-        [Key]
-        public int SupplyId { get; set; }
+        
 
         public string Name { get; set; } = null!;
 
         public string Description { get; set; } = null!;
 
-        public string Phone { get; set; } = null!;
 
         public string Unit { get; set; } = null!;
 
@@ -24,11 +23,12 @@ namespace KonSanad.Repository.Entities
 
         public int MinimumLevel { get; set; }
 
-        public DateTime? CreatedAt { get; set; }
+        // Link to Category
+        public int? CategoryId { get; set; }
+        [ForeignKey(nameof(CategoryId))]
+        public Category? Category { get; set; }
 
-        public DateTime? UpdatedAt { get; set; }
 
-        public string Status { get; set; } = null!;
 
         // Navigation
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();

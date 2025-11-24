@@ -6,10 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace KonSanad.Repository.Entities
 {
     [Table("Volunteers")]
-    public class Volunteer
+    public class Volunteer : BaseEntity<Guid>
     {
-        [Key]
-        public int VolunteerId { get; set; }
+       
 
         public int? ManagerId { get; set; }
         [ForeignKey(nameof(ManagerId))]

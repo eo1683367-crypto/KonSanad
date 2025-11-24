@@ -7,10 +7,9 @@ using System.Reflection;
 namespace KonSanad.Repository.Entities
 {
     [Table("Managers")]
-    public class Manager
+    public class Manager : BaseEntity<int>
     {
-        [Key]
-        public int ManagerId { get; set; }
+       
 
         public string FullName { get; set; } = null!;
 
@@ -28,5 +27,9 @@ namespace KonSanad.Repository.Entities
         public ICollection<HelpOrder> HelpOrders { get; set; } = new List<HelpOrder>();
         public ICollection<Receipt> Receipts { get; set; } = new List<Receipt>();
         public ICollection<Campaign> Campaigns { get; set; } = new List<Campaign>();
+
+        public ICollection<SupplyMovement> SupplyMovements { get; set; } = new List<SupplyMovement>();
+
+        public ICollection<Volunteer> Volunteers { get; set; } = new List<Volunteer>();
     }
 }

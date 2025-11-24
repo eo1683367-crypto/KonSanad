@@ -6,10 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace KonSanad.Repository.Entities
 {
     [Table("CampaignResult")]
-    public class CampaignResult
+    public class CampaignResult : BaseEntity<Guid>
     {
-        [Key]
-        public int CampaignResultId { get; set; }
+        
 
         public int CampaignId { get; set; }
         [ForeignKey(nameof(CampaignId))]
@@ -21,8 +20,6 @@ namespace KonSanad.Repository.Entities
 
         public int? TotalItemsCount { get; set; }
 
-        public DateTime? CreatedAt { get; set; }
-
-        public DateTime? UpdatedAt { get; set; }
+      
     }
 }

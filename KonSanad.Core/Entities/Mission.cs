@@ -6,10 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace KonSanad.Repository.Entities
 {
     [Table("Missions")]
-    public class Mission
+    public class Mission : BaseEntity<int>
     {
-        [Key]
-        public int MissionId { get; set; }
+      
 
         public int? ManagerId { get; set; }
         [ForeignKey(nameof(ManagerId))]
@@ -31,6 +30,6 @@ namespace KonSanad.Repository.Entities
 
         public DateTime? EndDate { get; set; }
 
-        public string Status { get; set; } = null!;
+      
     }
 }

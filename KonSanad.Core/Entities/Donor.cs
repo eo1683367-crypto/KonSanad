@@ -7,10 +7,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace KonSanad.Repository.Entities
 {
     [Table("Donor")]
-    public class Donor
+    public class Donor : BaseEntity<int>
     {
-        [Key]
-        public int DonorId { get; set; }
+        
 
         public string FullName { get; set; } = null!;
 
@@ -20,13 +19,7 @@ namespace KonSanad.Repository.Entities
 
         public string Address { get; set; } = null!;
 
-        public string Status { get; set; } = null!;
-
         public string DonorType { get; set; } = null!;
-
-        public DateTime? CreatedAt { get; set; }
-
-        public DateTime? UpdatedAt { get; set; }
 
         // Navigation
         public ICollection<DonationOrder> DonationOrders { get; set; } = new List<DonationOrder>();

@@ -8,10 +8,9 @@ using System.Drawing;
 namespace KonSanad.Repository.Entities
 {
     [Table("DonationOrders")]
-    public class DonationOrder
+    public class DonationOrder : BaseEntity<int>
     {
-        [Key]
-        public int DonationOrderId { get; set; }
+       
 
         public int? DonorId { get; set; }
         [ForeignKey(nameof(DonorId))]
@@ -21,8 +20,6 @@ namespace KonSanad.Repository.Entities
         [ForeignKey(nameof(CampaignId))]
         public Campaign? Campaign { get; set; }
 
-        // If you have a DonationType table use this FK, otherwise keep as int/enum
-        public int? DonationTypeId { get; set; }
 
         public int? ManagerId { get; set; }
         [ForeignKey(nameof(ManagerId))]
@@ -32,9 +29,6 @@ namespace KonSanad.Repository.Entities
 
         public decimal? CashAmount { get; set; }
 
-        public DateTime? CreatedAt { get; set; }
-
-        public DateTime? UpdatedAt { get; set; }
 
         public DateTime? OrderDate { get; set; }
 
